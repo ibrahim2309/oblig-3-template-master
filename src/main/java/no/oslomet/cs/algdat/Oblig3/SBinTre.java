@@ -114,7 +114,17 @@ public class SBinTre<T> {
     }
 
     public int antall(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if (verdi == null) return 0;
+        int teller = 0;
+        int cmp = 0;
+        //Først må jeg se om treet innhodler verdien
+        if (inneholder(verdi)) {
+            Node<T> p = rot;
+            Node<T> q = null;
+
+            //Deretter må jeg loope gjennom hver iterasjon av treet som innholder vedien
+        }
+
     }
 
     public void nullstill() {
