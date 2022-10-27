@@ -194,8 +194,6 @@ public class SBinTre<T> {
 
             oppgave.utførOppgave(node.verdi); // Hvis noden ikke er null så skriver vi den ut
         }
-
-
     }
 
     public void postordenRecursive(Oppgave<? super T> oppgave) {
@@ -203,7 +201,14 @@ public class SBinTre<T> {
     }
 
     private void postordenRecursive(Node<T> p, Oppgave<? super T> oppgave) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        if (p == null) return; //Basistilfellet
+
+        //Enklere kall
+        postordenRecursive(p.venstre, oppgave);
+        postordenRecursive(p.høyre, oppgave);
+
+        //Utføreroppgave
+        oppgave.utførOppgave(p.verdi);
     }
 
     public ArrayList<T> serialize() {
@@ -215,14 +220,7 @@ public class SBinTre<T> {
     }
 
     public static void main(String[] args) {
-        Integer[] a = {4,7,2,9,4,10,8,7,4,6};
-        SBinTre<Integer> tre = new SBinTre<>(Comparator.naturalOrder()); for (int verdi : a) { tre.leggInn(verdi); }
-        System.out.println(tre.antall()); System.out.println(tre.antall(5)); System.out.println(tre.antall(4)); System.out.println(tre.antall(7)); System.out.println(tre.antall(10));
-// Utskrift: 10
-// Utskrift: 0
-// Utskrift: 3
-// Utskrift: 2
-// Utskrift: 1
+
 
     }
 
