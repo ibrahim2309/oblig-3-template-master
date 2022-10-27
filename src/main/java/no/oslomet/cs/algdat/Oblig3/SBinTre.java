@@ -123,7 +123,22 @@ public class SBinTre<T> {
             Node<T> q = null;
 
             //Deretter må jeg loope gjennom hver iterasjon av treet som innholder vedien
+
+            while (p != null) {
+
+                cmp = comp.compare(verdi, p.verdi);
+
+                if (cmp < 0) {
+                    p = p.venstre;
+                } else {
+                    if (p.verdi == verdi) {
+                        teller++;
+                    }
+                    p = p.høyre;
+                }
+            }
         }
+        return teller;
 
     }
 
