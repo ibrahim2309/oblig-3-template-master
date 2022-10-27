@@ -180,7 +180,22 @@ public class SBinTre<T> {
     }
 
     public void postorden(Oppgave<? super T> oppgave) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+
+        //Starter først med å finne den første noden i postorden
+        Node<T> node = førstePostorden(rot);
+        oppgave.utførOppgave(node.verdi);
+        //Etter å funnet første node så lager jeg en while- løkke for å finne de andre verdiene
+        while (true) {
+            node = nestePostorden(node);
+
+            if (node == null) {
+                break;
+            }
+
+            oppgave.utførOppgave(node.verdi); // Hvis noden ikke er null så skriver vi den ut
+        }
+
+
     }
 
     public void postordenRecursive(Oppgave<? super T> oppgave) {
