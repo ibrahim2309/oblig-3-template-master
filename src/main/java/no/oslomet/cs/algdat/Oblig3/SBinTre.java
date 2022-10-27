@@ -94,7 +94,15 @@ public class SBinTre<T> {
             p = cmp < 0 ? p.venstre : p.høyre;
         }
 
+        // p er nå null, dvs. ute av treet, q er den siste vi passerte
+        p = new Node<>(verdi, q); // Gir p en ny verdi siden den er null
 
+        if (q == null) rot = p; // p blir rotnode
+        else if (cmp < 0) q.venstre = p;  //venstre barn til q
+        else q.høyre = p; //høyre barn til q
+
+        antall++;  // En verdi mer i treet
+        return true; // Vellykket innlegging
     }
 
     public boolean fjern(T verdi) {
