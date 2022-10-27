@@ -1,9 +1,7 @@
 package no.oslomet.cs.algdat.Oblig3;
 
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.StringJoiner;
+import java.util.*;
 
 public class SBinTre<T> {
     private static final class Node<T>   // en indre nodeklasse
@@ -83,7 +81,20 @@ public class SBinTre<T> {
     }
 
     public boolean leggInn(T verdi) {
-        throw new UnsupportedOperationException("Ikke kodet ennå!");
+        //Hentet fra kompendiet med
+        Objects.requireNonNull(verdi,"Ulovlig med null verdier");
+
+        Node<T> p = rot; //p starter med roten
+        Node<T> q = null;
+        int cmp = 0;
+
+        while (p!= null) {  //Forstetter til p er ute av treet
+            q = p; //q er foreldre noden til p
+            cmp = comp.compare(verdi,p.verdi); // Sammenligner p og verdi
+            p = cmp < 0 ? p.venstre : p.høyre;
+        }
+
+
     }
 
     public boolean fjern(T verdi) {
@@ -128,6 +139,18 @@ public class SBinTre<T> {
 
     static <K> SBinTre<K> deserialize(ArrayList<K> data, Comparator<? super K> c) {
         throw new UnsupportedOperationException("Ikke kodet ennå!");
+    }
+
+    public static void main(String[] args) {
+        Integer[] a = {4,7,2,9,4,10,8,7,4,6};
+        SBinTre<Integer> tre = new SBinTre<>(Comparator.naturalOrder()); for (int verdi : a) { tre.leggInn(verdi); }
+        System.out.println(tre.antall()); System.out.println(tre.antall(5)); System.out.println(tre.antall(4)); System.out.println(tre.antall(7)); System.out.println(tre.antall(10));
+// Utskrift: 10
+// Utskrift: 0
+// Utskrift: 3
+// Utskrift: 2
+// Utskrift: 1
+
     }
 
 
