@@ -13,8 +13,4 @@ I Oppgave 2 så skal returnere antall forekomster av verdi i treet. Jeg traverse
 
 I Oppgave 3 så bruker en loop inspirert av  kompendie 5.1.7. Den går som følgende: Hvis p.venstre ikke er null, vil p bli settet som p.neste siden det ikke er bladnoden. Samme med høyre og returnerer p tilslutt.
 
-
-
-- Framgangsmåten funnet i Kompendiet.
-
-I Oppgave 4 så starter med å finne den første noden p i postorden. Deretter vil (f.eks. i en while-løkke) setningen: p = nestePostorden(p); gi den neste. Osv. 
+I Oppgave 4 så starter med å finne den første noden p i postorden. Deretter gjennom en while løkke finner jeg den neste p = nestePostorden(p);. Osv. 
